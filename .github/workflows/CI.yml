@@ -29,12 +29,12 @@ jobs:
         #### Builds
       - name: hacer build del frontend 
         run: ./gradle/build
-        working-directory: src/clients
+        working-directory: src/Clients
          
           
       - name: hacer build del backend
         run: ./gradle/build test
-        working-directory: src/clients
+        working-directory: src/Backend/OrderService
           
             
           
