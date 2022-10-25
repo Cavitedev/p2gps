@@ -27,12 +27,14 @@ on:
             gradle-version: 2.1
             
         #### Builds
-        - name: hacer build del frontend
-          working-directory:src/clients
-          run: ./gradle/build
+        - name: hacer build del frontend 
+          run:
+            working-directory:src/clients
+           ./gradle/build
           
         - name: hacer build del backend
-          working-directory:src/clients
-          run: ./gradle/build test
+          run:
+            working-directory:src/clients
+            ./gradle/build test
             
           
