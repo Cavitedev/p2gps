@@ -23,8 +23,8 @@ services:
     deploy:
       replicas: 1
       resources:
-        limis:
-          cpus: '0.3'
+        limits:
+          cpus: "0.3"
           memory: 500M
       restart_policy:
         condition: on-failure
