@@ -6,15 +6,15 @@ services:
       replicas: 1
       resources:
         limits:
-          cpus: '1'
-      #          memory: 200M
+          cpus: '0.15'
+          memory: 200M
       restart_policy:
-        condition: none
+        condition: on-failure
     ports:
-      - "28017"
-      - "27017"
+      - "28017:28017"
+      - "27017:27017"
     volumes:
-      - db-data:/var/logs/
+      - "db-data:/data/db"
 
   order:
     image: carlosvillora/p2gps:order
@@ -24,28 +24,24 @@ services:
       replicas: 1
       resources:
         limits:
-          cpus: "1"
-      #          memory: 500M
+          cpus: "0.3"
+          memory: 500M
       restart_policy:
-        condition: none
+        condition: on-failure
     ports:
-      - "8080"
+      - "8080:8080"
   web:
     image: carlosvillora/p2gps:web
     deploy:
       replicas: 1
       resources:
         limits:
-          cpus: '1'
-      #          memory: 300M
+          cpus: '0.25'
+          memory: 300M
       restart_policy:
-        condition: none
+        condition: on-failure
     ports:
-      - "8082"
+      - "80:8080"
 
 volumes:
   db-data:
-    driver: azure_file
-    driver_opts:
-      share_name: db-data
-      storage_account_name: almacengps
